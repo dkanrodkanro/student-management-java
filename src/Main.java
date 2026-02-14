@@ -12,5 +12,11 @@ public class Main {
         System.out.println("빼기: " + minus);
         System.out.println("곱하기: " + multi);
         System.out.println("나누기: " + div);
+
+        Student s1 = new Student("철수", 90);
+        Student s2 = new Student("영희", 80);
+
+        s1.printInfo();
+        s2.printInfo();
     }
 }
