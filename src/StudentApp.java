@@ -27,6 +27,10 @@ public class StudentApp {
 
             } else if (menu == 4) {
 
+                deleteByName();
+
+            } else if (menu == 5) {
+
                 System.out.println("프로그램 종료");
                 break;
 
@@ -48,7 +52,8 @@ public class StudentApp {
         System.out.println("1. 학생 추가");
         System.out.println("2. 전체 조회");
         System.out.println("3. 이름으로 검색");
-        System.out.println("4. 종료");
+        System.out.println("4. 이름으로 삭제");
+        System.out.println("5. 종료");
         System.out.print("선택: ");
 
     }
@@ -109,6 +114,45 @@ public class StudentApp {
             System.out.println("해당 이름의 학생이 없습니다.");
 
         }
+
+    }
+
+    static void deleteByName() {
+
+        if (list.isEmpty()) {
+
+            System.out.println("삭제할 학생이 없습니다.");
+            return;
+
+        }
+
+        System.out.print("삭제할 이름: ");
+        String nameForDelete = sc.next();
+
+        int deleteIndex = -1;
+
+        for (int i = 0; i < list.size(); i++) {
+
+            if (list.get(i).name.equals(nameForDelete)) {
+
+                deleteIndex = i;
+                break;  // 같은 이름이 여러명이면 첫 번째로 나온 이름만 삭제
+
+            }
+
+        }
+
+        if (deleteIndex == -1) {
+
+            System.out.println("해당 이름의 학생이 없습니다.");
+
+        } else {
+
+            Student removed = list.remove(deleteIndex);
+            System.out.print("삭제 완료: ");
+            removed.printInfo();
+        }
+
 
     }
 
