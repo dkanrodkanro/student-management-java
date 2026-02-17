@@ -31,6 +31,10 @@ public class StudentApp {
 
             } else if (menu == 5) {
 
+                updateScoreByName();
+
+            }else if (menu == 6) {
+
                 System.out.println("프로그램 종료");
                 break;
 
@@ -53,7 +57,8 @@ public class StudentApp {
         System.out.println("2. 전체 조회");
         System.out.println("3. 이름으로 검색");
         System.out.println("4. 이름으로 삭제");
-        System.out.println("5. 종료");
+        System.out.println("5. 점수 수정");
+        System.out.println("6. 종료");
         System.out.print("선택: ");
 
     }
@@ -153,6 +158,45 @@ public class StudentApp {
             removed.printInfo();
         }
 
+    }
+
+    static void updateScoreByName() {
+
+        if (list.isEmpty()) {
+
+            System.out.println("수정할 학생이 없습니다.");
+            return;
+
+        }
+
+        System.out.print("점수를 수정할 이름: ");
+        String target = sc.next();
+
+        Student foundStudent = null;
+
+        for (Student s : list) {
+
+            if (s.name.equals(target)) {
+
+                foundStudent = s;
+                break;  // 처음으로 찾은 학생만 삭제
+
+            }
+
+        }
+
+        if (foundStudent == null) {
+
+            System.out.println("해당 학생의 이름이 없습니다.");
+            return;
+
+        }
+
+        System.out.print("새 점수: ");
+        foundStudent.score = sc.nextInt();
+
+        System.out.print("수정 완료: ");
+        foundStudent.printInfo();
 
     }
 
